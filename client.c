@@ -3,15 +3,20 @@
 int send_message(pid_t pid, const char *message)
 {
     int counter;
-    
-    counter = 8;
-    while (*message != '\0')
+    int i = 0;
+
+    counter = 7 ;
+    while (message[i])
     {
-        while (counter--)
+        while (counter-- >= 0)
         {
-            printf("%d\n", (*message / 10));
+            if ((message[i] >> counter) & 0x01)
+                kill(pid, SIGUSR1);
+            else
+                kill(pid, SIGUSR2);
         }
-        ++message;
+        i++;
+        counter = 7;
     }
     return (0);
 }
@@ -28,8 +33,6 @@ int main(int argc, char **argv)
         send_message(pid, message);
     } 
     else 
-    {
         ft_putstr("USAGE - ./client [pid] [message]\n");
-    }
     return (0);
 }

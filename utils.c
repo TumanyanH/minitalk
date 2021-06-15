@@ -78,3 +78,10 @@ char		*ft_itoa(int n)
 	}
 	return (str);
 }
+
+int power(int num, int power)
+{
+	while (power--)
+		num *= num;
+	return (num);
+}
