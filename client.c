@@ -10,6 +10,7 @@ int send_message(pid_t pid, const char *message)
     {
         while (counter-- >= 0)
         {
+            usleep(100);
             if ((message[i] >> counter) & 0x01)
                 kill(pid, SIGUSR1);
             else
