@@ -1,5 +1,14 @@
 # include "minitalk.h"
 
+void send_end(pid_t pid)
+{
+    int i = 7;
+
+    while (i--)
+        usleep(100);
+        kill(pid, SIGUSR2);
+}
+
 int send_message(pid_t pid, const char *message)
 {
     int counter;
@@ -19,6 +28,7 @@ int send_message(pid_t pid, const char *message)
         i++;
         counter = 7;
     }
+    // send_end(pid);
     return (0);
 }
 

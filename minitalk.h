@@ -11,4 +11,9 @@ char		*ft_itoa(int n);
 int	        ft_atoi(const char *str);
 int         power(int num, int power);
 
+typedef struct s_data {
+    unsigned char byte;
+    int counter;
+} t_data;
+
 #endif
